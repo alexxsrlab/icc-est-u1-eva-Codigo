@@ -1,3 +1,6 @@
+import Controllers.LibroController;
+import View.ViewConsole;
+import Models.Book;
 public class App {
     public static void main(String[] args) throws Exception {
 
@@ -31,8 +34,24 @@ public class App {
                 new Book("Modern Operating Systems", 1992),
                 new Book("Computer Organization and Design", 1994),
                 new Book("Deep Learning", 2016),
-                new Book("The Elements of Statistical Learning", 2001)
+                new Book("The Elements of Statistical Learning", 2001),
         };
+        LibroController lB = new LibroController();
+        ViewConsole vC = new ViewConsole();
+        vC.printMessage("Arreglo Libros");
+        vC.printBookArray(books);
+        System.out.println("Arreglo ordenado Descendentemente");
+        lB.sortByName(books);
+        vC.printBookArray(books);
+        vC.printMessage("\nBuscar libro con nombre Python the best book");
+        Book librosBuscados = lB.searchByName(books, Python the best book);
+        if (librosBuscados == null){
+            vC.printMessage("No se a encontrado persona con nombre Python the best book");
+        }else{
+            vC.printMessage("Se encontro libro con nombre Python the best book");
+            vC.printMessage(librosBuscados.toString());
+        }
+
 
     }
 }
